@@ -48,7 +48,7 @@ steps:
     args:
       - -c
       - |
-        if [[ "$BRANCH_NAME" == "master" ]]; then
+        if [[ "$BRANCH_NAME" == "main" ]]; then
           echo "Triggering release"
           yarn release --no-ci
         fi
