@@ -20,8 +20,8 @@ import Segment
         return
     }
 
-    @objc public func page(pathname: String) {
-        Analytics.shared().screen(pathname)
+    @objc public func page(pathname: String, properties: Dictionary<String, Any>) {
+        Analytics.shared().screen(pathname, properties)
         return
     }
     

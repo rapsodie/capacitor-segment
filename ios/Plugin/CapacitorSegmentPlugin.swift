@@ -65,8 +65,9 @@ public class CapacitorSegmentPlugin: CAPPlugin {
             call.reject("Pathname was not supplied")
             return
         }
+        let properties: Dictionary = call.getObject("properties") ?? [:]
         
-        implementation.page(pathname: pathname)
+        implementation.page(pathname: pathname, properties: properties)
         call.resolve()
     }
     

@@ -24,4 +24,4 @@ export type TrackOptions = {
   properties: Record<string, unknown>;
 };
 
-export type PageOptions = { pathname: string };
+export type PageOptions = { pathname: string, properties: Record<string, unknown> };

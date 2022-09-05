@@ -36,8 +36,11 @@ public class Segment {
         );
     }
 
-    public void page(String pathname) {
-        this.analytics.screen(pathname);
+    public void page(String pathname, JSObject properties) {
+        this.analytics.screen(
+                pathname,
+                makePropertiesFromMap(makeMapFromJSON(properties)),
+                );
     }
 
     public void reset() {

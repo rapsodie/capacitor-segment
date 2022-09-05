@@ -35,7 +35,7 @@ implements CapacitorSegmentPlugin {
   async page (options: PageOptions): Promise<void> {
     if (!window.analytics) return Promise.reject('Segment is not initialized')
     if (!options.pathname) return Promise.reject('Pathname was not supplied')
-    window.analytics.page(options.pathname)
+    window.analytics.page(options.pathname, options.properties)
   }
 
   async reset(): Promise<void> {
