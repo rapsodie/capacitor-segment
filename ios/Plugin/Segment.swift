@@ -21,7 +21,7 @@ import Segment
     }
 
     @objc public func page(pathname: String, properties: Dictionary<String, Any>) {
-        Analytics.shared().screen(pathname, properties)
+        Analytics.shared().screen(pathname, properties: properties)
         return
     }
     
