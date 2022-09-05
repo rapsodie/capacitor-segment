@@ -1,0 +1,67 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    secretEnv: ['SSH_KEY']
+    entrypoint: 'bash'
+    args:
+      - -c
+      - |
+        echo "$$SSH_KEY" >> /root/.ssh/id_rsa
+        chmod 400 /root/.ssh/id_rsa
+        cat <<EOF >/root/.ssh/config
+        Hostname github.com
+        IdentityFile /root/.ssh/id_rsa
+        EOF
+        ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+    volumes:
+      - name: 'ssh'
+        path: /root/.ssh
+  - name: 'gcr.io/cloud-builders/git'
+    args:
+      [
+        'clone',
+        '--branch',
+        '${BRANCH_NAME}',
+        'git@github.com:Rapsodie/capacitor-segment.git',
+      ]
+    volumes:
+      - name: 'ssh'
+        path: /root/.ssh
+  - name: node
+    entrypoint: yarn
+    args: ['install']
+  - name: node
+    entrypoint: yarn
+    args: ['build']
+  - name: node
+    entrypoint: yarn
+    args: ['lint']
+  - name: node
+    entrypoint: yarn
+    args: ['test']
+  - name: node
+    entrypoint: 'bash'
+    args:
+      - -c
+      - |
+        echo $$GH_TOKEN
+        echo "//npm.pkg.github.com/:_authToken=$$GH_TOKEN" > .npmrc
+        echo '@rapsodie:registry=https://npm.pkg.github.com' >> .npmrc
+        cat package.json
+        cat .npmrc
+    secretEnv: ['GH_TOKEN']
+  - name: node
+    entrypoint: 'bash'
+    args:
+      - -c
+      - |
+        if [[ "$BRANCH_NAME" == "master" ]]; then
+          echo "Triggering release"
+          yarn release --no-ci
+        fi
+    secretEnv: ['GH_TOKEN']
+availableSecrets:
+  secretManager:
+    - versionName: projects/rapsodie/secrets/GH_TOKEN/versions/latest
+      env: GH_TOKEN
+    - versionName: projects/rapsodie/secrets/github-rapsodie-admin-ssh-key/versions/latest
+      env: SSH_KEY
