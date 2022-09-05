@@ -1,5 +1,5 @@
 {
-  "name": "rapsodie/capacitor-segment",
+  "name": "@rapsodie/capacitor-segment",
   "version": "0.2.1",
   "description": "A Capacitor plugin for Segment analytics",
   "main": "dist/plugin.cjs.js",
