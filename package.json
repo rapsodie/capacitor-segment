@@ -1,5 +1,5 @@
 {
-  "name": "@joinflux/capacitor-segment",
+  "name": "rapsodie/capacitor-segment",
   "version": "0.2.1",
   "description": "A Capacitor plugin for Segment analytics",
   "main": "dist/plugin.cjs.js",
@@ -11,16 +11,16 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "JoinfluxCapacitorSegment.podspec"
+    "RapsodieCapacitorSegment.podspec"
   ],
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joinflux/capacitor-segment.git"
+    "url": "git+https://github.com/rapsodie/capacitor-segment.git"
   },
   "bugs": {
-    "url": "https://github.com/joinflux/capacitor-segment/issues"
+    "url": "https://github.com/rapsodie/capacitor-segment/issues"
   },
   "keywords": [
     "capacitor",

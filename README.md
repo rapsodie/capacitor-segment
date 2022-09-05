@@ -8,13 +8,13 @@ A Capacitor plugin for Segment analytics
 ## Install
 
 ```sh
-npm install @joinflux/capacitor-segment
+npm install @rapsodie/capacitor-segment
 
 # yarn 
-yarn add @joinflux/capacitor-segment
+yarn add @rapsodie/capacitor-segment
 
 # pnpm 
-pnpm add @joinflux/capacitor-segment
+pnpm add @rapsodie/capacitor-segment
 ```
 
 and 

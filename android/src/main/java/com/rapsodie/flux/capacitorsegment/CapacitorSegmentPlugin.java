@@ -1,4 +1,4 @@
-package com.joinflux.flux.capacitorsegment;
+package com.rapsodie.flux.capacitorsegment;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
