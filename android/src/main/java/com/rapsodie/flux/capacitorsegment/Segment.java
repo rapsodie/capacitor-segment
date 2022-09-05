@@ -39,7 +39,7 @@ public class Segment {
     public void page(String pathname, JSObject properties) {
         this.analytics.screen(
                 pathname,
-                makePropertiesFromMap(makeMapFromJSON(properties)),
+                makePropertiesFromMap(makeMapFromJSON(properties))
                 );
     }
 
