@@ -10,6 +10,12 @@ public class CapacitorSegmentPlugin: CAPPlugin {
     private var initialized = false
     private let implementation = Segment()
 
+    @objc func initialized(_ call: CAPPluginCall) {
+        call.resolve([
+            "initialized": initialized
+        ])
+    }
+
     @objc func initialize(_ call: CAPPluginCall) {
         if (initialized == true) {
             call.reject("Segment is already initialized")
