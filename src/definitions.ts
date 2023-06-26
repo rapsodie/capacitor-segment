@@ -1,4 +1,5 @@
 export interface CapacitorSegmentPlugin {
+  initialized(): Promise<{initialized: boolean}>;
   initialize(options: InitializeOptions): Promise<void>;
   identify(options: IdentifyOptions): Promise<void>;
   track(options: TrackOptions): Promise<void>;
