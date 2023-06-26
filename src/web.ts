@@ -16,6 +16,9 @@ export class CapacitorSegmentWeb
 extends WebPlugin 
 implements CapacitorSegmentPlugin {
 
+  async initialized(): Promise<{initialized: boolean}> {
+    return { initialized: !!window.analytics }
+  }
   async initialize(options: InitializeOptions): Promise<void> {
     await this.loadScript('segment', getSegmentScript(options.key));
   }
