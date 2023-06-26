@@ -20,6 +20,12 @@ public class CapacitorSegmentPlugin extends Plugin {
     private Segment implementation = new Segment();
 
     @PluginMethod
+    public void initialized(PluginCall call) {
+        JSObject ret = new JSObject();
+        ret.put("initialized", initialized);
+        call.resolve(ret);
+    }
+    @PluginMethod
     public void initialize(PluginCall call) {
         if (initialized == true) {
             call.reject("Segment is already initialized");
